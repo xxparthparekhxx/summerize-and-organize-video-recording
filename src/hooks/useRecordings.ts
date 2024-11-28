@@ -1,4 +1,4 @@
-import useSWR from 'swr';
+import { useQuery } from '@tanstack/react-query';
 
 interface UseRecordingsProps {
   date?: string;
@@ -12,19 +12,12 @@ export function useRecordings({ date, status, tag }: UseRecordingsProps = {}) {
   if (status) params.append('status', status);
   if (tag) params.append('tag', tag);
 
-  const { data, error, mutate } = useSWR(
-    `/api/recordings?${params.toString()}`,
-    async (url) => {
-      const response = await fetch(url);
+  return useQuery({
+    queryKey: ['recordings', { date, status, tag }],
+    queryFn: async () => {
+      const response = await fetch(`/api/recordings?${params.toString()}`);
       if (!response.ok) throw new Error('Failed to fetch recordings');
       return response.json();
     }
-  );
-
-  return {
-    recordings: data?.recordings,
-    isLoading: !error && !data,
-    isError: error,
-    mutate,
-  };
+  });
 }
