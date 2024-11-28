@@ -1,6 +1,4 @@
 import { RecordingsGrid } from "@/components/RecordingsGrid";
-import { SidebarLeft } from "@/components/sidebar-left";
-import { SidebarRight } from "@/components/sidebar-right";
 import { Providers } from "../providers";
 
 import {
@@ -40,7 +38,6 @@ export default function Page() {
           <RecordingsGrid />
         </Providers>
       </SidebarInset>
-      <SidebarRight />
     </SidebarProvider>
   );
 }

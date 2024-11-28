@@ -10,37 +10,34 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: 'rgb(0 0 0)',
+  			foreground: 'rgb(255 255 255)',
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
-  			},
-  			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  				DEFAULT: 'rgba(255, 255, 255, 0.05)',
+  				foreground: 'rgb(255 255 255)'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: 'rgb(255 255 255)',
+  				foreground: 'rgb(0 0 0)'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: 'rgba(255, 255, 255, 0.1)',
+  				foreground: 'rgba(255, 255, 255, 0.8)'
   			},
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: 'rgba(255, 255, 255, 0.1)',
+  				foreground: 'rgba(255, 255, 255, 0.6)'
   			},
-  			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
-  			},
+			  accent: {
+				DEFAULT: 'rgba(255, 255, 255, 0.05)',
+				foreground: 'rgb(255 255 255)',
+				hover: 'rgba(255, 255, 255, 0.1)'
+			  },
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
-  			border: 'hsl(var(--border))',
+			  border: 'rgba(255, 255, 255, 0.1)',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
   			chart: {
