@@ -6,14 +6,18 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "watch": "tsx src/scripts/watchFiles.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
+    "chokidar": "^4.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "form-data": "^4.0.1",
     "lucide-react": "^0.462.0",
     "next": "15.0.3",
+    "node-fetch": "^3.3.2",
     "prisma": "^5.22.0",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
@@ -29,6 +33,7 @@
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.19.2",
     "typescript": "^5"
   }
 }
