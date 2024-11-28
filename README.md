@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# RECAP - Self-hosted Video Processing Pipeline
+
+A powerful automated system that transforms your video recordings into searchable, summarized content with zero effort.
+
+## Features
+
+- ⚡ **Instant Processing**: Automatic detection and processing of new recordings
+- 🤖 **AI Powered**: Advanced transcription and summarization using Groq's LLM
+- 🎯 **Precise Navigation**: Time-stamped, searchable transcripts
+- 📹 **OBS Studio Integration**: Direct processing of OBS recordings
+- 🎵 **Audio Extraction**: Automated FFmpeg processing
+- 💾 **Local Storage**: Secure database for video management
+- ✨ **Interactive UI**: Modern, responsive dashboard interface
+
+## Quick Setup
+
+1. Clone the environment configuration file:
+
+cp .example.env .env
+
+
+2. Configure the required environment variables:
+
+WATCH_PATH="path/to/obs/recordings"  # Directory path for OBS recordings
+GROQ_API_KEY="your-api-key"         # Your Groq API key
+
+
+## System Architecture
+
+The application follows a streamlined processing pipeline:
+
+1. Video Recording (OBS Studio Output)
+2. File Detection (Automatic Processing)
+3. Parallel Processing:
+   - Audio Extraction (FFmpeg)
+   - Video Storage (Local Database)
+4. Transcription (Groq API)
+5. Final Output (Interactive UI)
+
+## Tech Stack
+
+- Next.js for the frontend framework
+- React Flow for pipeline visualization
+- Framer Motion for animations
+- Tailwind CSS for styling
+- FFmpeg for audio processing
+- Groq API for AI transcription
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Configure environment variables
+4. Run the development server: `npm run dev`
+5. Open the dashboard at `http://localhost:3000/dashboard`
