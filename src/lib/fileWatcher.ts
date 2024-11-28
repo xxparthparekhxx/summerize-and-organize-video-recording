@@ -61,48 +61,56 @@ export class VideoWatcher {
   }
 
   private async processVideo(filePath: string) {
-    console.log(`Processing started for: ${filePath}`);
+    console.log(`Processing started: ${filePath}`);
 
-    // Create initial record
+    const stats = await fs.promises.stat(filePath);
     const recording = await prisma.recording.create({
       data: {
         fileName: path.basename(filePath),
         filePath: filePath,
-        recordedAt: new Date(),
-        fileSize: (await fs.promises.stat(filePath)).size,
+        recordedAt: stats.birthtime,
+        fileSize: stats.size,
+        status: "PROCESSING",
+        duration:0,
+        language: "en",
         transcript: "",
         summary: "",
-        duration: 0,
-        status: "PROCESSING", // Add this status field to schema
+        audioPath: "",
       },
     });
     try {
-      // Extract audio
       console.log("Extracting audio...");
       const audioPath = await this.extractAudio(filePath);
 
-      // Get transcription
       console.log("Generating transcript...");
-      const transcription = await transcribeAudio(audioPath);
+      const transcriptionResult = await transcribeAudio(audioPath);
 
-      // Generate summary
       console.log("Generating summary...");
-      const summary = await generateSummary(transcription.fullText);
+      const summary = await generateSummary(transcriptionResult.fullText);
 
-      // Update record with results
+      // Update recording with all the rich data
       await prisma.recording.update({
         where: { id: recording.id },
         data: {
           audioPath,
-          transcript: transcription.fullText,
+          transcript: transcriptionResult.fullText,
           summary,
+          duration: transcriptionResult.duration,
+          language: transcriptionResult.language,
           status: "COMPLETED",
+          segments: {
+            create: transcriptionResult.segments.map((segment) => ({
+              startTime: segment.start,
+              endTime: segment.end,
+              text: segment.text,
+            })),
+          },
         },
       });
 
-      console.log(`Processing completed for: ${filePath}`);
+      console.log(`Processing completed: ${filePath}`);
     } catch (error) {
-      console.error(`Error processing ${filePath}:`, error);
+      console.error(`Processing error: ${filePath}`, error);
       await prisma.recording.update({
         where: { id: recording.id },
         data: { status: "ERROR" },
@@ -125,5 +133,3 @@ export class VideoWatcher {
     this.watcher.close();
   }
 }
-
-

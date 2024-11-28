@@ -9,10 +9,19 @@ interface TranscriptionResponse {
   text: string;
   segments: {
     id: number;
+    seek: number;
     start: number;
     end: number;
     text: string;
+    tokens: number[];
+    temperature: number;
+    avg_logprob: number;
+    compression_ratio: number;
+    no_speech_prob: number;
   }[];
+  x_groq: {
+    id: string;
+  };
 }
 
 export async function transcribeAudio(audioPath: string) {
@@ -34,6 +43,7 @@ export async function transcribeAudio(audioPath: string) {
   return {
     fullText: result.text,
     duration: result.duration,
+    language: result.language,
     segments: result.segments.map(seg => ({
       start: seg.start,
       end: seg.end,
