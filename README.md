@@ -3,6 +3,9 @@
 
 A powerful automated system that transforms your video recordings into searchable, summarized content with zero effort.
 
+## Ai Pipeline 
+![Processing Pipeline](https://raw.githubusercontent.com/xxparthparekhxx/summerize-and-organize-video-recording/refs/heads/main/public/flow.png)
+
 ## Features
 
 - ⚡ **Instant Processing**: Automatic detection and processing of new recordings
