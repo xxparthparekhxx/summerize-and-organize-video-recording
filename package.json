@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "watch": "tsx src/scripts/watchFiles.ts"
+    "watch": "tsx src/scripts/watchFiles.ts",
+    "db":"npx prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
